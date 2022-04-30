@@ -1,0 +1,231 @@
+# - * - coding: utf-8 - * -
+"" "
+Created on Mon Feb 21 18:49:27 2021
+
+hoauthors: Md. Farhadul Islam & Sarah Zabeen
+"" "
+
+
+from easygui import *
+import load_model from tensorflow.keras.models
+from tensorflow.keras.preprocessing import image
+import numpy as np
+import sys
+
+detection = load_model ('auto_chloro_model.h5')
+
+# message to be displayed
+text = 'Welcome, dear user.
+জান nTo know the disease of your crop (leafy) and cure the disease, take a picture of the leaf.
+* n * Select a photo * and upload that photo by clicking the button. '
+
+# show logo
+img = "auto-chloro.PNG"
+
+# window title
+title = "File Open-Path"
+  
+# button list
+button_list = []
+  
+# button 1
+button1 = "Select Image"
+button2 = "Close"
+
+# appending button to the button list
+button_list.append (button1)
+button_list.append (button2)
+
+
+  
+# creating a button box
+output = buttonbox (msg = text, title = title, image = img, choices = button_list)
+if output == 'Select image':
+    txt = ''
+    path = fileopenbox ()
+    pred = buttonbox (msg = "Click on image to determine disease", title = 'Detection', image = path, choices = ('Cancel',))
+    if pred! = path:
+        sys.exit ()
+        
+    test_img = image.load_img (path, target_size = (48,48))
+    test_img = image.img_to_array (test_img)
+    test_img = np.expand_dims (test_img, axis = 0)
+    result = detection.predict (test_img)
+    a = result.argmax ()
+    classes = ['Pepper__bell___Bacterial_spot images',
+             'Pepper__bell___healthy images',
+             'Potato___Early_blight images',
+             'Potato___healthy images',
+             'Potato___Late_blight images',
+             'Tomato_Bacterial_spot images',
+             'Tomato_Early_blight images',
+             'Tomato_healthy images',
+             'Tomato_Late_blight images',
+             'Tomato_Leaf_Mold images',
+             'Tomato_Septoria_leaf_spot images',
+             'Tomato_Spider_mites_Two_spotted_spider_mite images',
+             'Tomato__Target_Spot images',
+             'Tomato__Tomato_mosaic_virus images',
+             'Tomato__Tomato_YellowLeaf__Curl_Virus images']
+    category = []
+    for i in classes:
+          category.append (i)
+    for i in range (len (classes)):
+           if (i == a):
+                output = category [i]
+    if output == 'Pepper__bell___Bacterial_spot images':
+        output = 'Bacterial spot disease of bell pepper / capsicum'
+        txt = 'Biological control: n nBacterial stain control is very complex and expensive. A
+If the disease occurs at the beginning of the season, it is better to destroy the entire crop. A
+Copper-rich antibacterial, forms a protective coating on fruits and petals. A
+Antibiotics for bacterial viruses (bacteriophages) are available on the market that kill certain bacteria. A
+Soak the seeds in 1.3% sodium hypochlorite solution for 1 minute or in hot water (50 সেল C) for 25 minutes. A
+n nChemical control:
+সর্ব n \ nAlways take preventive measures through biological control under integrated pest management as much as possible. A
+Only copper-containing antibacterial agents can prevent and partially control the disease. A
+Spray as soon as the disease appears, and apply every 10-14 days in warm and humid environment. A
+Mixed pesticides rich in mancozeb and copper may provide some protection. '
+        
+    elif output == 'Potato___Early_blight images':
+        output = 'Potato early blight disease'
+        txt = 'Biological control: n nBacillus subtilis composite material or copper-based.
+Recognized as an organic fungicide that can be applied against this disease. A
+n nChemical control:
+সম্ভব n nPrevent prevention through biological control under possible pest management. A
+There are different types of fungicides available in the market which can control potato blight. A
+Azoxitrobin, pyroclostrobin, diphenconazole, boscalid, chlorothalonil, phenamidone, maneb, mancozeb, trifloxistrobin,.
+And fungicides like germination etc. are used to control the disease. A
+It is recommended to use different types of chemical mixtures periodically. Finish all attendance on time in suitable weather. A
+After applying these ingredients, take a break before harvest to be safe for health. '
+        
+    elif output == 'Potato___Late_blight images':
+        output = 'Potato Nabi Dhwasa Rog'
+        txt = 'Biological control: n nApply a copper based fungicide before the onset of dry weather. A
+Infection can also be prevented by spraying organic coating on the leaves. A
+n nChemical control:
+n \ nAlways take preventive measures through biological control under integrated pest management. A
+It is important to use fungicides to control nematodes everywhere in the field, especially in humid parts. A
+The corresponding fungicide that covers the leaves is very effective before infection and does not allow the fungus to develop resistance to the fungicide. A
+Mandipropamid, chlorothalonil, fluazinam for preventive measures.
+Triphenyltin, or mancozeb fungicides can be used. A
+It is also possible to purify the seeds with fungicides like Mancozeb before sowing. '
+        
+    elif output == 'Tomato_Bacterial_spot images':
+        output = 'Tomato Bacterial Disease'
+        txt = 'Biological control: n nBacterial spot control is very difficult and expensive. A
+If the disease attacks at the beginning of the season, it destroys the whole land. Bactericidal copper content.
+The leaves and fruit are used as an antidote. Bacteriophages (bacteriophages) that kill bacteria.
+It is available all the time. 1.3% sodium hypochlorite in one minute or in hot water (50 ্টি C) for 25 minutes.
+Soaking the seeds can reduce the spread of the disease. A
+n nChemical control:
+n \ nPrevent disease control through biological control under integrated pest management as much as possible. A
+Copper is used as a bactericidal and antiseptic.
+Can provide control. Apply bactericide as soon as the first symptoms appear and.
+Then apply warm [small spots / cold (spots)], 10 to 14 days in case of humid weather. A
+Since the constant use of copper builds up a bactericidal immune system, copper is a synthetic substance.
+It is recommended to use Mancozeb with bactericide. '
+        
+    elif output == 'Tomato_Early_blight images':
+        output = 'Tomato early blight'
+        txt = 'Biological control: n nBacillus subtilis composite material or copper-based.
+Recognized as an organic fungicide that can be applied against this disease. A
+n nChemical control:
+সম্ভব n nPrevent prevention through biological control under possible pest management. A
+There are different types of fungicides available in the market which can control potato blight. A
+Azoxitrobin, pyroclostrobin, diphenconazole, boscalid, chlorothalonil, phenamidone, maneb, mancozeb, trifloxistrobin,.
+And fungicides like germination etc. are used to control the disease. A
+It is recommended to use different types of chemical mixtures periodically. Finish all attendance on time in suitable weather. A
+After applying these ingredients, take a break before harvest to be safe for health. '
+        
+    elif output == 'Tomato_Late_blight images':
+        output = 'Tomato's nasal decay disease'
+        txt = 'Biological control: n nThere are no known biological measures against epilepsy to date. A
+To prevent the spread of the disease, immediately remove or destroy the crop from the infected area and the infected crop.
+Refrain from making organic manure. A
+n nChemical control:
+নিন n \ nTake integrated pest management to prevent disease through biological control. A
+Spray fungicides containing Mandipropamide, Chlorothalonil, Fluazineum, and Mancozeb Organized Ingredients to prevent neoplasms. A
+If watering is done from the top of the tree or during the rainy season of the year, it is necessary to apply fungicide. '
+        
+    elif output == 'Tomato_Leaf_Mold images':
+        output = 'Tomato Leaf Fungus Disease n'
+        txt = 'Biological control: n nHot water for disinfection (25 minutes at 122 degrees Fahrenheit or 50 degrees Celsius).
+There are suggestions to purify the seeds with. Acronium strictum, Dysima palvinata, Trichoderma harzinum.
+Or Trichoderma viridi and Trichothesium rosium fungi Mycovelosila falvar are enemies and can be used to control them.
+In greenhouses Acremonium strictum, Trichoderma viridi strain 3 and Trichothesium rosium are 53, 6 and 64 percent respectively.
+Mycovelosila falwa of tomato is suppressed by rate application. On a small scale, mix apple cider, garlic or milk and vinegar.
+It can be used to control the fungus. A
+n nChemical control:
+সর্ব n nAlways take preventive measures through biological control under integrated pest management as much as possible. If the weather is favorable for the disease to spread.
+Fungicide should be sprayed before infection. Chlorothalonil, maneb, mancozeb and.
+Copper fungicides are recommended for use in the field. Difenoconazole for greenhouses.
+Mandipropamid, cymoxanil, famoxadone and cyprodinil.
+Use is recommended. '
+    
+    elif output == 'Tomato_Septoria_leaf_spot images':
+        output = 'Biological control: n nSeptoria spot disease of tomatoes n'
+        txt = 'Copper fungicides, such as Bordeaux mixture, copper hydroxide, copper sulphate,.
+Or copper oxychloride sulfate can help control the germs of the disease.
+Spray every 8 to 10 days throughout the season, especially during flowering and fruiting.
+Follow the rules written on the pesticide packaging before harvesting. A
+n nChemical control:
+n nPrevent prevention through biological control under possible integrated pest management. I mean, six.
+The fungicides Mancozeb and Chlorothalonil are effective in controlling tomato septoria. A
+Spray at intervals of 8 to 10 days throughout the season, especially during flowering and fruiting. A
+Follow the rules written on the pesticide packaging before harvesting. '
+        
+    elif output == 'Tomato_Spider_mites_Two_spotted_spider_mite images':
+        output = 'Normal Red Spider'
+        txt = 'Biological control: n nWith a slight attack, just wash the spider away with water and remove the infected leaf. A
+Prepare a mixture of castor oil, basil, soybean and neem oil. Spray the leaves to reduce the reproduction of RTC. A
+Reproduction of spiders can also be reduced by using a solution of garlic tea, nettle leaf bark or insecticide soap. A
+Depending on the species of spider in the field, use predatory spiders with biological controllers (for example, Phytoceiulus persimilis).
+Or use the organic pesticide Bacillus thuringiensis. It is important to apply a second spray 2-3 days after the initial spray. A
+n nChemical control:
+সর্ব n \ nAlways take preventive measures through biological control under integrated pest management as much as possible. A
+These spiders are very difficult to control with poisonous substances because they have been used for several years in most generations.
+Resistance to various chemicals is developed. Carefully select the chemical controller to control the predators of this spider.
+It does not destroy indiscriminately. Examples are water-soluble sulfur (3 g / liter), spiromycin (1 ml / liter).
+Dicofol (5 ml / liter) or abamectin-rich fungicides can be used. Second time 2 to 3 days after initial spray.
+It is important to apply the spray. '
+        
+    elif output == 'Tomato__Target_Spot images':
+        output = 'Tomato Target Disease'
+        txt = 'Watering in the morning so that the leaves of the tomato plant have time to dry. Water or dry the leaves at the base of the tree.
+Use a hose or drip system for. Apply a sesame to monitor the fruit from direct contact with the soil. '
+        
+    elif output == 'Tomato__Tomato_mosaic_virus images':
+        output = 'Tomato mosaic virus disease'
+        txt = 'Biological control: দিন n \ n4 ায় C for 4 days or 72-75 ° C for 24 hours dry.
+Heating and purifying the seeds helps to keep the seeds virus free. Alternatively, 100 g / liter.
+Soak the seeds in a solution of trisodium phosphate for 15 minutes and rinse thoroughly with water.
+Even if it is dried later, it works. A
+n nChemical control:
+প্রতিরোধ n \ nTake preventive measures through biological control as much as possible under integrated pest management. A
+There is no effective chemical pest management for tomato mosaic virus. '
+        
+    elif output == 'Tomato__Tomato_YellowLeaf__Curl_Virus images':
+        output = 'Tomato yellow leaf curl virus disease'
+        txt = 'Biological control: n nTome yellow tomato leaf curl virus (TYLCV) disease.
+No repression is known. Control whitefly breeding to avoid virus attacks. A
+n nChemical control:
+আ n nOnce infected with the virus, no further control measures work against it. A
+Whitefly breeding needs to be controlled to avoid virus attacks. A
+Pyrethroids are pesticides used by plants to fertilize plants or soil.
+Reproduction can be reduced. But excessive use of these can increase the immunity of simple fish. '
+        
+    elif output == 'Pepper__bell___healthy images' or output == 'Potato___healthy images' or output == 'Tomato_healthy images':
+        output = 'healthy'
+        
+    if output! = 'healthy':
+        new = textbox (output, 'Detection', txt)
+    else:
+        new = msgbox (output, 'Detection', 'End')
+    
+elif output == img:
+    new = msgbox ("AutoCloro" is a machine learning software for detecting plant diseases from an image.
+This software also cures the disease.
+n \ nDeveloped by Farhad and Sarah.
+T nTeam Hydro AI - 2021 ",
+               "About Us", "End")
+    
