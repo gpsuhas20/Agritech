@@ -7,9 +7,6 @@
     background-repeat: no-repeat;
     background-size: cover;
     height: 125vh;
-    
-    
- 
    
  }
  .image-css
@@ -17,7 +14,6 @@
    height: 40rem;
    width: 40rem;
 
-  
  }
  
  .movie-head{
@@ -102,6 +98,7 @@
    font-family:"Times New Roman";
    font-size:1.4rem;
  }
+ 
  @media(max-width:1300px)
  {
    .movie-para{
@@ -193,3 +190,82 @@
   color:#173117;
   
 }
+
+/* Crop Recommendation */
+
+.crop-background {
+ 
+  background-image: url("C:\Users\91805\Desktop\agritech\pd\src\images\cropbg.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 125vh;
+}
+
+.crop-img {
+  width:100%;
+}
+
+.crop-heading
+{
+  text-transform: uppercase;
+  font-size: large;
+
+}
+.crop-card
+{
+  background-color: none;
+  opacity: .65;
+  font-weight: bolder;
+  
+}
+.crop-font{
+  font-weight: bolder;
+}
+.crop-input{
+  text-align:center;
+   font-family: "Times New Roman";
+   font-size:1.4rem;
+   font-weight: bolder;
+   color: black;
+}
+.crop-input-box{
+  text-align:center;
+   font-family: "Times New Roman";
+   font-size:1rem;
+   font-weight: bolder;
+   color: black;
+}
+
+
+/* Fertilizer Recommendation*/
+
+
+.fertilizer_background
+{
+  background-image: url("C:\Users\91805\Desktop\agritech\pd\src\images\fertilizer_2.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  padding:2rem;
+}
+
+.fertilizer-modal {
+
+  height: 100%;
+  width:100%;
+  
+}
+
+.fertilizer-data {
+  margin: 1rem;
+  font-family:  serif;
+  font-size: 1.2rem;
+  font-weight: 1rem;
+  text-align: justify;
+  color: black;
+}
+
+
+

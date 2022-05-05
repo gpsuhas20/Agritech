@@ -770,10 +770,7 @@ else
                         <Input type="textarea" rows={8} cols={60}  className="movie-input mt-2 "  name="prediction" value={remedy} placeholder='Remedy'></Input>
                         </div>
                     </div>
-               
-               
             
-      
         </>
 
     )

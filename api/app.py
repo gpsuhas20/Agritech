@@ -265,7 +265,7 @@ def croprecommender():
         #crop_recommendation_model = pickle.load(open('Crop_Recommendation.pkl','rb'))
         data = request.get_json(force=True)
         print(data)
-        temperature=data["temperature"]
+        temperature=data["temp"]
         humidity=data["humidity"]
         rainfall=data["rainfall"]
         nitrogen=data["nitrogen"]
@@ -292,10 +292,10 @@ def fertilizer_recommend():
         df = pd.read_csv('data/Crop_NPK.csv')
 
         data = request.get_json(force=True)
-        crop_name=data["crop_name"]
-        N_filled = data["N_filled"]
-        P_filled = data["P_filled"]
-        K_filled = data["K_filled"]
+        crop_name= str.lower(data["crop_name"])
+        N_filled = float(data["nitrogen"])
+        P_filled = float(data["phosphorous"])
+        K_filled = float(data["potassium"])
 
         N_desired = df[df['Crop'] == crop_name]['N'].iloc[0]
         P_desired = df[df['Crop'] == crop_name]['P'].iloc[0]
@@ -339,7 +339,7 @@ def fertilizer_recommend():
 
         result = response1 +" "+ response2+ " "+response3
 
-        return jsonify({"output":result})
+        return jsonify({"output1":response1,"output2":response2,"output3":response3})
 
 
 
@@ -361,37 +361,76 @@ def pred_pest(pest):
 
 
 
-@app.route("/predict-pest", methods=['GET', 'POST'])
+@app.route("/predict-pest", methods=['POST'])
 def predict():
-    if request.method == 'POST':
-        file = request.files['image']  # fetch input
-        filename = file.filename
+        data = request.get_json(force=True)
+        pest=data['pesticide']
+        image1=''
+        image2=''
+        dose1=''
+        dose2=''
+      
+       
+       
+        if pest == 'Aphids':
+                image1='Banzo'
+                image2= 'Derby'
+                dose1='330 ml/acre'
+                dose2='600 gm/Ha'                
+        
+        elif pest == 'Armyworm':
+                image1 = 'Prefek'
+                image2 = 'Prudent'
+                dose1='2.5-3.5 Tbsp/ 16 L'
+                dose2 = '500 gm/L'
 
-        file_path = os.path.join('static/user uploaded', filename)
-        file.save(file_path)
+        elif pest == 'Beetle':
+                image1 = 'Smash'
+                image2 = 'Kozuka'
+                dose1='1.0-3.0 Tbsp/16 L'
+                dose2 = '600-100 ml/Ha'
 
-        pred = pred_pest(pest=file_path)
-        if pred == 'x':
-            return jsonify({"output":"error"})
-        if pred[0] == 0:
-            pest_identified = 'aphids'
-        elif pred[0] == 1:
-            pest_identified = 'armyworm'
-        elif pred[0] == 2:
-            pest_identified = 'beetle'
-        elif pred[0] == 3:
-            pest_identified = 'bollworm'
-        elif pred[0] == 4:
-            pest_identified = 'earthworm'
-        elif pred[0] == 5:
-            pest_identified = 'grasshopper'
-        elif pred[0] == 6:
-            pest_identified = 'mites'
-        elif pred[0] == 7:
-            pest_identified = 'mosquito'
-        elif pred[0] == 8:
-            pest_identified = 'sawfly'
-        elif pred[0] == 9:
-            pest_identified = 'stem borer'
+        elif pest== 'Bollworm':
+                image1 = 'Auzar'
+                image2 = 'Bioclaim'
+                dose1='160-280 ml/Ha'
+                dose2 = '220 gm/Ha'
 
-        return jsonify({"output":pest_identified})
+        elif pest== 'Earthworm':
+                image1 = 'Biostadt-Malathion'
+                image2 = 'Smash'
+                dose1='570 gm/L'
+                dose2 = '1.0-4.5 Tbsp/16 L' 
+
+        elif pest== 'Grasshopper':
+                image1 = 'Biostadt-Malathion'
+                image2 = 'Perfek'
+                dose1='570 gm/L'
+                dose2 = '2.5-3.5 Tbsp/16 L'  
+
+        elif pest== 'Mites':
+                image1 = 'Bioclaim'
+                image2 = 'Biostadt-Malathion'
+                dose1='220 gm/Ha'
+                dose2 = '570 gm/L'
+
+        elif pest== 'Mosquito':
+                image1 = 'Evident'
+                image2 = 'Thiomax'
+                dose1='400-500 gm/Ha'
+                dose2 = '100 gm/Ha' 
+
+        elif pest== 'Sawfly':
+                image1 = 'Krush'
+                image2 = 'Ultimo-super'
+                dose1='1250 ml/Ha'
+                dose2 = '60-75 ml/Ha'
+
+        elif pest== 'Stem-borer':
+                image1 = 'Cartop'
+                image2 = 'Voter'
+                dose1='1000 ml/Ha'
+                dose2 = '24 gm/Ha'           
+   
+
+        return jsonify({"image1":image1,"image2":image2,"dose1":dose1,"dose2":dose2})
