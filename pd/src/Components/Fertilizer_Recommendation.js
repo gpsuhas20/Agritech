@@ -54,7 +54,7 @@ function Fertilizer_Recommendation() {
         <div className='col-12 offset-lg-2 col-lg-8'>
             <Card className='crop-card'>
                       
-                        <h  style={{fontSize:'2rem'}} className="offset-3"><strong>Fertilizer Recommendation</strong></h>
+                        <h  style={{fontSize:'2rem'}} className="pest-head"><strong>Fertilizer Recommendation</strong></h>
                           
                    
                   
@@ -147,7 +147,7 @@ function Fertilizer_Recommendation() {
 
                             <FormGroup>
                                <div className='row'>
-                                   <div className='col-5 offset-4'>
+                                   <div className='col-6 offset-5'>
                                    <Button className="button btn-feedback"  onClick={handleSubmit}>
                                        Recommend
                                     

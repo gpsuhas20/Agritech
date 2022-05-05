@@ -388,7 +388,7 @@ def predict():
                 image1 = 'Smash'
                 image2 = 'Kozuka'
                 dose1='1.0-3.0 Tbsp/16 L'
-                dose2 = '600-100 ml/Ha'
+                dose2 = '6:10 ml/Ha'
 
         elif pest== 'Bollworm':
                 image1 = 'Auzar'

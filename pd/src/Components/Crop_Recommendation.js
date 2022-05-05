@@ -57,23 +57,23 @@ function Crop_Recomendation()
                     
                 </ModalBody>
         </Modal>
-    </div>    
+        </div>    
     
-        <div className="container">
-        <div className='col-12 offset-lg-2 col-lg-8'>
-              <Card className='crop-card'>
+        <div className="container ">
+        <div className='offset-3 col-6'>
+              <Card className='crop-card '>
                       
-                           <h  style={{fontSize:'2rem'}} className="offset-3"><strong>Crop Recommendation</strong></h>
+                           <h  style={{fontSize:'2rem'}} className="pest-head mb-4 "><strong>Crop Recommendation</strong></h>
                           
                    
                   
                        <Form>
                            <FormGroup>
                                <div className='row'>
-                                   <div className='col-8 col-sm-8 offset-lg-4 offset-2 mt-4 col-lg-8'>
+                                   <div className='col-8 offset-3'>
                                        <Label htmlFor='name' className='crop-input'><strong>Nitrogen (in ratio)</strong></Label>
                                    </div>
-                                   <div className='col-8 col-sm-4 offset-lg-4 offset-2'>
+                                   <div className='col-7 offset-3'>
                                         <Input type='text'  className="crop-input-box" placeholder='Enter the value' value = {nitrogen} onChange={(e) => setNitrogen(e.target.value)}></Input> 
                                    </div>
                                    
@@ -82,40 +82,40 @@ function Crop_Recomendation()
                    
                            <FormGroup>
                                <div className='row'>
-                                   <div className='col-8 col-sm-8 offset-lg-4 offset-2  col-lg-8'>
+                                   <div className='col-8 offset-3'>
                                        <Label htmlFor='name' className='crop-input'><strong>Phosphorus (in ratio)</strong></Label>
                                    </div>
-                                   <div className='col-8 col-sm-4 offset-lg-4 offset-2'>
+                                   <div className='col-7 offset-3'>
                                         <Input type='text'  className="crop-input-box" placeholder='Enter the value' value = {phosphorous} onChange={(e) => setPhosphorous(e.target.value)}></Input>
                                    </div>
                                </div>
                            </FormGroup>
                            <FormGroup>
                                <div className='row'>
-                                   <div className='col-8 col-sm-8 offset-lg-4 offset-2  col-lg-8'>
+                                   <div className='col-8 offset-3'>
                                        <Label htmlFor='name' className='crop-input'><strong>Potassium (in ratio)</strong></Label>
                                    </div>
-                                   <div className='col-8 col-sm-4 offset-lg-4 offset-2'>
+                                   <div className='col-7 offset-3'>
                                         <Input type='text'  className="crop-input-box" placeholder='Enter the value' value = {potassium} onChange={(e) => setPotassium(e.target.value)}></Input>
                                    </div>
                                </div>
                            </FormGroup> 
                            <FormGroup>
                                <div className='row'>
-                                   <div className='col-8 col-sm-8 offset-lg-4 offset-2  col-lg-8'>
-                                       <Label htmlFor='name'className='crop-input'><strong>Ph Level</strong></Label>
+                                   <div className='col-8 offset-3'>
+                                       <Label htmlFor='name'className='crop-input'><strong>ph Level</strong></Label>
                                    </div>
-                                   <div className='col-8 col-sm-4 offset-lg-4 offset-2'>
+                                   <div className='col-7 offset-3'>
                                         <Input type='number'  className="crop-input-box" placeholder='Enter the value' value = {ph} onChange={(e) => setPh(e.target.value)}  max={14}></Input>
                                    </div>
                                </div>
                            </FormGroup>
                            <FormGroup>
                                <div className='row'>
-                                   <div className='col-8 col-sm-8 offset-lg-4 offset-2  col-lg-8'>
+                                   <div className='col-8 offset-3'>
                                        <Label htmlFor='name'className='crop-input' ><strong>Rainfall(in mm)</strong></Label>
                                    </div>
-                                   <div className='col-8 col-sm-4 offset-lg-4 offset-2'>
+                                   <div className='col-7 offset-3'>
                                         <Input type='text'  className="crop-input-box" placeholder='Enter the value' value = {rainfall} onChange={(e) => setRainfall(e.target.value)}></Input>
                                    </div>
                                  
@@ -123,10 +123,10 @@ function Crop_Recomendation()
                            </FormGroup>
                            <FormGroup>
                                <div className='row'>
-                                   <div className='col-8 col-sm-8 offset-lg-4 offset-2  col-lg-8'>
+                                   <div className='col-8 offset-3'>
                                        <Label htmlFor='name'className='crop-input'><strong>Temperature(in °C)</strong></Label>
                                    </div>
-                                   <div className='col-8 col-sm-4 offset-lg-4 offset-2'>
+                                   <div className='col-7 offset-3'>
                                         <Input type='text'  className="crop-input-box" placeholder='Enter the value' value = {temp} onChange={(e) => setTemp(e.target.value)}></Input>
                                    </div>
                                  
@@ -134,17 +134,17 @@ function Crop_Recomendation()
                            </FormGroup>
                            <FormGroup>
                                <div className='row'>
-                                   <div className='col-8 col-sm-8 offset-lg-4 offset-2  col-lg-8'>
+                                   <div className='col-8 offset-3'>
                                        <Label className='crop-input' htmlFor='name' ><strong>Relative Humidity(in %)</strong></Label>
                                    </div>
-                                   <div className='col-8 col-sm-4 offset-lg-4 offset-2'>
+                                   <div className='col-7 offset-3'>
                                         <Input type='text' className="crop-input-box"  placeholder='Enter the value' value = {humidity} onChange={(e) => setHumidity(e.target.value)}></Input>
                                    </div>
                                </div>
                            </FormGroup>
                            <FormGroup>
                                <div className='row'>
-                                   <div className='col-5 offset-4'>
+                                   <div className='col-8 offset-4'>
                                    <Button className="button btn-feedback"  onClick={handleSubmit}>
                                        Recommend
                                     

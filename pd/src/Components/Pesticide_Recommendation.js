@@ -23,8 +23,6 @@ function Pesticide_Recommendation()
     
     const handleSubmit=async(e)=>{
 
-        
-
         const {data}= await axios.post('http://localhost:5000/predict-pest', {pesticide})
 
          setData(data)
@@ -63,12 +61,22 @@ function Pesticide_Recommendation()
     
         <div className="container">
             <Modal className='success-modal ' isOpen = {isSuccessOpen} toggle={toggleSuccessModal}>
-                <ModalHeader toggle={toggleSuccessModal} className='success-modal-text text-center'> <strong>Suitable to Grow 🌱</strong> </ModalHeader>
+                <ModalHeader toggle={toggleSuccessModal} className='success-modal-text text-center modal-lg'> <strong>Recommended Pesticides </strong> </ModalHeader>
                 <ModalBody>
-                    <h1 className='crop-heading'> </h1>
-                        
-                        <p>{<img src={path1} className="crop-img" altext="notfound"/>}</p>  
-                        <p>{<img src={path2} className="crop-img" altext="notfound"/>}</p>                               
+                        <div className='row'>
+                            <div className='offset-2 col-4 pest-name'>{data1} </div>
+                            <div className='offset-2 col-4 pest-name'>{data2}</div>
+
+                        </div>  
+                        <div className='modal-body'>
+                        <img src={path1} className="pest-img" altext="notfound"/>
+                        <img src={path2} className="pest-img" altext="notfound"/>                   
+                        </div>    
+                        <div>
+                            <span className='pest-dose'>{data3}</span>
+                            <span className='pest-dose'>{data4}</span>
+
+                        </div>                        
                     
                 </ModalBody>
             </Modal>
@@ -77,9 +85,9 @@ function Pesticide_Recommendation()
         <div className='fertilizer_background'>
         <div className="container">
         <div className='col-12 offset-lg-2 col-lg-8'>
-            <Card className='crop-card'>
+            <Card className='pest-card mt-4'>
                       
-                        <h  style={{fontSize:'2rem'}} className="offset-1"><strong>Recommend Pesticide Based on Pests</strong></h>
+                        <h  style={{fontSize:'2rem'}} className="pest-head"><strong>Pesticide Recommendation</strong></h>
                           
                    
                   
@@ -87,10 +95,10 @@ function Pesticide_Recommendation()
                            <FormGroup>
                                 <div className='row'>
                                         <div className='col-8 col-sm-8 offset-lg-4 offset-2  col-lg-8'>
-                                            <Label htmlFor='name' className='crop-input'><strong>Select the pest</strong></Label>
+                                            <Label htmlFor='name' className='crop-input offset-1 mt-4'><strong>Select the pest</strong></Label>
                                         </div>
 
-                                        <div className='col-8 col-sm-4 offset-lg-4 offset-2'>  
+                                        <div className='col-8 col-sm-4 offset-lg-4 offset-2 mt-2'>  
 
                                             <Input type='select'
                                                 className='crop-input-box form-control col-12'
@@ -118,7 +126,7 @@ function Pesticide_Recommendation()
 
                             <FormGroup>
                                <div className='row'>
-                                   <div className='col-5 offset-4'>
+                                   <div className='col-5 offset-5 mt-2'>
                                    <Button className="button btn-feedback"  onClick={handleSubmit}>
                                        Recommend
                                     

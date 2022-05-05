@@ -199,7 +199,13 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 125vh;
+  height: 135vh;
+  padding: 2rem;
+
+ 
+}
+.crop-margin{
+  margin-bottom: 2rem;
 }
 
 .crop-img {
@@ -217,7 +223,7 @@
   background-color: none;
   opacity: .65;
   font-weight: bolder;
-  
+ 
 }
 .crop-font{
   font-weight: bolder;
@@ -267,5 +273,38 @@
   color: black;
 }
 
+/* Pesticide Recommendation */
+
+.pest-card
+{
+  background-color: none;
+  opacity: .65;
+  font-weight: bolder;
+  width : 100%;
+  height: 15rem ;
+}
+
+.pest-head {
+  width:100%;
+  text-align: center;
+}
+
+.pest-img {
+  width:50%;
+  height: 50%;
+}
+
+.pest-dose {
+  margin-right: 1rem;
+  margin-left: 3rem;
+  padding: 1.5rem;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.pest-name {
+  font-weight: bold;
+  font-size: 1rem;
+}
 
 
